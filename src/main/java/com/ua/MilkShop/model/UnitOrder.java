@@ -1,5 +1,7 @@
 package com.ua.MilkShop.model;
 
+import com.ua.MilkShop.model.goods.ProductGoods;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,12 +14,12 @@ public class UnitOrder implements Serializable{
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "goods_id")
+    private ProductGoods goods;
 
     private double capacity;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "basket_id", referencedColumnName = "id")
     private Basket basket;
 
@@ -40,12 +42,12 @@ public class UnitOrder implements Serializable{
         this.id = id;
     }
 
-    public Product getProduct() {
-        return product;
+    public ProductGoods getGoods() {
+        return goods;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setGoods(ProductGoods goods) {
+        this.goods = goods;
     }
 
     public double getCapacity() {

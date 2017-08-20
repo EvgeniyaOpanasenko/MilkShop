@@ -1,11 +1,7 @@
 package com.ua.MilkShop.model;
 
-
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -13,6 +9,7 @@ public class UserDto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private Long id;
 
     private String userName;
@@ -24,10 +21,6 @@ public class UserDto implements Serializable {
 
     //"ROLE_USER"
     private String role;
-/*
-    @OneToOne(mappedBy = "account")
-    List<Basket> baskets;*/
-
 
     public UserDto() {
     }

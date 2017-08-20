@@ -2,6 +2,7 @@ package com.ua.MilkShop.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,11 +17,11 @@ public class Basket implements Serializable {
     // currently logged in/ can be empty
     //one session can hols only one logged in user
     @OneToOne
-    @JoinColumn(name = "account_id")
-    private UserDto account;
+    @JoinColumn(name = "user_id")
+    private UserDto userDto;
 
     //TODO work on mistake Mapping UnitOrder=>Basket
-    @OneToMany(mappedBy = "basket", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "basket")
     private List<UnitOrder> orders;
 
     //TODO add delivery type
@@ -40,12 +41,12 @@ public class Basket implements Serializable {
         this.id = id;
     }
 
-    public UserDto getAccount() {
-        return account;
+    public UserDto getUserDto() {
+        return userDto;
     }
 
-    public void setAccount(UserDto account) {
-        this.account = account;
+    public void setUserDto(UserDto userDto) {
+        this.userDto = userDto;
     }
 
     public List<UnitOrder> getOrders() {
