@@ -23,6 +23,8 @@ public class UnitOrder implements Serializable{
     @JoinColumn(name = "basket_id", referencedColumnName = "id")
     private Basket basket;
 
+    private double totalOfPurchaseOrder;
+
     public UnitOrder() {
     }
 
@@ -58,5 +60,11 @@ public class UnitOrder implements Serializable{
         this.capacity = capacity;
     }
 
+    public double getTotalOfPurchaseOrder() {
+        return totalOfPurchaseOrder;
+    }
 
+    public void setTotalOfPurchaseOrder(double totalOfPurchaseOrder) {
+        this.totalOfPurchaseOrder = totalOfPurchaseOrder;
+    }
 }
