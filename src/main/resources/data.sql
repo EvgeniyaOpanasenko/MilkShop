@@ -1,5 +1,7 @@
+/*
 INSERT INTO goods (name, description, price_per_unit, creation_date, Unit_of_measurement, image_path)
-VALUES('cheese', 'natural product', 192.5, NOW(), 'KG', '');
+VALUES('cheese', 'natural item', 192.5, NOW(), 'KG', '');
+*/
 
 INSERT INTO users (address, password, approve_password, phone, role, user_name)
 VALUES('kiev', '123456', '', '12345678', 'ROLE_USER','eva');

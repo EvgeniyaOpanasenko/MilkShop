@@ -1,6 +1,7 @@
+/*
 package com.ua.MilkShop.model;
 
-import com.ua.MilkShop.model.goods.ProductGoods;
+import com.ua.MilkShop.model.goods.ItemGoods;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +16,7 @@ public class UnitOrder implements Serializable{
 
     @OneToOne
     @JoinColumn(name = "goods_id")
-    private ProductGoods goods;
+    private ItemGoods goods;
 
     private double capacity;
 
@@ -44,11 +45,11 @@ public class UnitOrder implements Serializable{
         this.id = id;
     }
 
-    public ProductGoods getGoods() {
+    public ItemGoods getGoods() {
         return goods;
     }
 
-    public void setGoods(ProductGoods goods) {
+    public void setGoods(ItemGoods goods) {
         this.goods = goods;
     }
 
@@ -68,3 +69,4 @@ public class UnitOrder implements Serializable{
         this.totalOfPurchaseOrder = totalOfPurchaseOrder;
     }
 }
+*/

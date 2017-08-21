@@ -1,15 +1,15 @@
+/*
 package com.ua.MilkShop.model.goods;
 
-import com.ua.MilkShop.model.abstractEntity.Product;
+import com.ua.MilkShop.model.Item;
 import com.ua.MilkShop.model.UnitOrder;
 import com.ua.MilkShop.model.enums.UnitOfMeasurement;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
 
 @Entity(name = "goods")
-public class ProductGoods extends Product implements Serializable {
+public class ItemGoods extends Item implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class ProductGoods extends Product implements Serializable {
     @OneToOne(mappedBy = "goods")
     private UnitOrder unitOrder;
 
-    public ProductGoods() {
+    public ItemGoods() {
     }
 
     public Long getId() {
@@ -59,3 +59,4 @@ public class ProductGoods extends Product implements Serializable {
         this.unitOfMeasurement = unitOfMeasurement;
     }
 }
+*/

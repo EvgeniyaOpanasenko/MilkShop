@@ -2,85 +2,65 @@ package com.ua.MilkShop.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "baskets")
-public class Basket implements Serializable {
+public class Basket extends Item {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    // if some discount is present than we add it here and calculate total
+    double discount;
 
-    // currently logged in/ can be empty
-    //one session can hols only one logged in user
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private UserDto userDto;
+    public Basket(double discount) {
+        this.discount = cost();
+        //total = discount;
+        description = "Basket consist of :  ";
+    }
 
-    //TODO work on mistake Mapping UnitOrder=>Basket
     @OneToMany(mappedBy = "basket")
-    private List<UnitOrder> unitOrders;
+    private List<PurchaseOrder> poList;
 
-    //TODO add delivery type
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserDto user;
 
-    // all unitOrders Sum
-    private double total;
-    private Date orderDate;
+    private int status = 1;
 
-    //TODO need to mark no closed orders and to get out of them list of purchase orders
-    // now is false => going to be changed to true when admin mark over!
-    private boolean status;
 
-    public Basket() {
+    @Override
+    public double cost() {
+        return discount;
     }
 
-    public Long getId() {
-        return id;
+    public double getDiscount() {
+        return discount;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 
-    public UserDto getUserDto() {
-        return userDto;
+    public List<PurchaseOrder> getPoList() {
+        return poList;
     }
 
-    public void setUserDto(UserDto userDto) {
-        this.userDto = userDto;
+    public void setPoList(List<PurchaseOrder> poList) {
+        this.poList = poList;
     }
 
-    public List<UnitOrder> getUnitOrders() {
-        return unitOrders;
+    public UserDto getUser() {
+        return user;
     }
 
-    public void setUnitOrders(List<UnitOrder> unitOrders) {
-        this.unitOrders = unitOrders;
+    public void setUser(UserDto user) {
+        this.user = user;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public boolean isStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 }
